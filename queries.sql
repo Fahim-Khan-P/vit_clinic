@@ -21,3 +21,4 @@ SELECT * FROM animals;
 
 BEGIN;
 DELETE FROM animals;
+SELECT * FROM animals;
