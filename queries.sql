@@ -123,3 +123,12 @@ INNER JOIN visits ON animals.id = visits.animal_id
 INNER JOIN vets ON vets.id = visits.vets_id 
 ORDER BY visits.visit_date 
 DESC LIMIT 1;
+
+SELECT count(visits.animal_id), vets.name AS vet 
+FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+INNER JOIN vets ON visits.vets_id = vets.id 
+INNER JOIN specialization ON vets.id = specialization.vets_id 
+INNER JOIN species ON species.id = specialization.species_id
+WHERE animals.species_id != specialization.species_id 
+GROUP BY vets.name;
