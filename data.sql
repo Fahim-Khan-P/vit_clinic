@@ -27,18 +27,19 @@ VALUES
   ('Pokemon'),
   ('Digimon');
 
-UPDATE animals SET species_id = 2 WHERE name LIKE '%mon';
-UPDATE animals SET species_id = 1  WHERE species_id IS NULL;
+UPDATE animals
+SET species_id = CASE
+  WHEN name LIKE '%mon' THEN (SELECT id FROM species WHERE name = 'Digimon')
+  ELSE (SELECT id FROM species WHERE name = 'Pokemon')
+END;
 
-UPDATE animals SET owner_id = 1 WHERE name='Agumon';
-UPDATE animals SET owner_id = 2 WHERE name='Gabumon';
-UPDATE animals SET owner_id = 2 WHERE name='Pikachu';
-UPDATE animals SET owner_id = 3 WHERE name='Devimon';
-UPDATE animals SET owner_id = 3 WHERE name='Plantmon';
-UPDATE animals SET owner_id = 4 WHERE name='Charmander';
-UPDATE animals SET owner_id = 4 WHERE name='Squirtle';
-UPDATE animals SET owner_id = 4 WHERE name='Blossom';
-UPDATE animals SET owner_id = 5 WHERE name='Angemon';
-UPDATE animals SET owner_id = 5 WHERE name='Boarmon';
+UPDATE animals
+SET owner_id = CASE 
+  WHEN name = 'Agumon' THEN (SELECT id FROM owners WHERE full_name = 'Sam Smith')
+  WHEN (name = 'Gabumon' OR name = 'Pikachu') THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
+  WHEN (name = 'Devimon' OR name = 'Plantmon') THEN (SELECT id FROM owners WHERE full_name = 'Bob')
+  WHEN (name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom') THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
+  WHEN (name = 'Angemon' OR name = 'Boarmon') THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+END;
 
 SELECT * FROM animals;
