@@ -48,6 +48,7 @@ CREATE TABLE specialization (
 
 CREATE TABLE visits (
   id SERIAL PRIMARY KEY,
+  visit_date DATE,
   vets_id INTEGER,
   animal_id INTEGER,
   CONSTRAINT FK_vets
@@ -56,5 +57,5 @@ CREATE TABLE visits (
 
   CONSTRAINT FK_animals
   FOREIGN KEY(animal_id)
-  REFERENCES animals(id),
-)
+  REFERENCES animals(id)
+);
