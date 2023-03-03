@@ -58,3 +58,7 @@ WHERE owners.full_name = 'Melody Pond';
 SELECT * FROM animals
 INNER JOIN species ON  animals.species_id = species.id
 WHERE species.id = 1;
+
+SELECT owners.full_name, animals.name
+FROM owners
+LEFT JOIN animals ON owners.id = animals.owner_id;
