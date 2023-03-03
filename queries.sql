@@ -132,3 +132,12 @@ INNER JOIN specialization ON vets.id = specialization.vets_id
 INNER JOIN species ON species.id = specialization.species_id
 WHERE animals.species_id != specialization.species_id 
 GROUP BY vets.name;
+
+SELECT species.name AS species,
+COUNT(*) FROM visits 
+JOIN vets ON vets.id = visits.vets_id 
+JOIN animals ON animals.id = visits.animal_id 
+JOIN species ON species.id = animals.species_id 
+WHERE vets.name = 'Maisy Smith' 
+GROUP BY species.name 
+ORDER BY count DESC LIMIT 1;
