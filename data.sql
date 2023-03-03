@@ -40,3 +40,5 @@ UPDATE animals SET owner_id = 4 WHERE name='Squirtle';
 UPDATE animals SET owner_id = 4 WHERE name='Blossom';
 UPDATE animals SET owner_id = 5 WHERE name='Angemon';
 UPDATE animals SET owner_id = 5 WHERE name='Boarmon';
+
+SELECT * FROM animals;
