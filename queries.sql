@@ -102,3 +102,7 @@ INNER JOIN vets ON vets.id = visits.vets_id
 WHERE vets.name = 'Stephanie Mendez' 
 AND visits.visit_date >= '2020-04-01' 
 AND visits.visit_date <= '2020-08-30';
+
+SELECT animals.name, count(*) FROM animals 
+INNER JOIN visits ON animals.id = visits.animal_id 
+GROUP BY animals.name ORDER BY count DESC LIMIT 1;
