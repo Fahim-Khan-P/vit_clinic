@@ -89,3 +89,8 @@ JOIN vets ON vets.id = visits.vets_id
 WHERE vets.name = 'William Tatcher'
 ORDER BY visits.visit_date DESC
 LIMIT 1;
+
+SELECT vets.name, species.name AS specializations
+FROM vets 
+LEFT JOIN specialization ON vets.id = specialization.vets_id 
+LEFT JOIN species ON species.id = specialization.species_id;
