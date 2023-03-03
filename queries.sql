@@ -62,3 +62,7 @@ WHERE species.id = 1;
 SELECT owners.full_name, animals.name
 FROM owners
 LEFT JOIN animals ON owners.id = animals.owner_id;
+
+SELECT species.name, count(*) FROM species
+JOIN animals ON species.id = animals.species_id 
+GROUP BY species.name;
