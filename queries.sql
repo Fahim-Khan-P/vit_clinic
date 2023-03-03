@@ -72,3 +72,8 @@ FROM animals
 JOIN species ON animals.species_id = species.id
 JOIN owners ON animals.owner_id = owners.id
 WHERE species.name = 'Digimon' AND owners.full_name = 'Jennifer Orwell';
+
+SELECT owners.full_name as full_name ,
+COUNT(*) as count FROM animals
+JOIN owners ON animals.owner_id = owners.id 
+GROUP BY owners.full_name ORDER BY count DESC LIMIT 1;
