@@ -81,3 +81,11 @@ GROUP BY owners.full_name ORDER BY count DESC LIMIT 1;
 SELECT name FROM animals
 JOIN owners ON animals.owner_id = owners.id 
 WHERE owners.full_name = 'Dean Winchester' AND animals.escape_attempts = 0;
+
+SELECT *
+FROM animals
+JOIN visits ON animals.id = visits.animal_id
+JOIN vets ON vets.id = visits.vets_id
+WHERE vets.name = 'William Tatcher'
+ORDER BY visits.visit_date DESC
+LIMIT 1;
